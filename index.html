@@ -1,1 +1,660 @@
-<h1> Hello World! </h1>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shigure ( huachig )- 个人博客</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4a6cf7;
+            --secondary-color: #6a75e9;
+            --bg-color: #f8f9fa;
+            --text-color: #333333;
+            --card-bg: #ffffff;
+            --header-bg: rgba(255, 255, 255, 0.95);
+            --border-color: #eaeaea;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s ease;
+            --radius: 8px;
+            --max-width: 1200px;
+        }
+
+        .dark-mode {
+            --primary-color: #6a82fb;
+            --secondary-color: #8391f9;
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --card-bg: #1e1e1e;
+            --header-bg: rgba(30, 30, 30, 0.95);
+            --border-color: #333333;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: var(--transition);
+        }
+
+        .container {
+            width: 100%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: var(--header-bg);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-color);
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .theme-toggle {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--text-color);
+            cursor: pointer;
+        }
+
+        /* Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 40px;
+            padding: 40px 0;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+
+        /* Blog List */
+        .blog-list {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .blog-item {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 25px;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .blog-item:hover {
+            box-shadow: var(--shadow);
+            transform: translateY(-3px);
+        }
+
+        .blog-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .blog-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .blog-title a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .blog-title a:hover {
+            color: var(--primary-color);
+        }
+
+        .blog-excerpt {
+            margin-bottom: 20px;
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+
+        .blog-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: var(--primary-color);
+        }
+
+        .blog-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 4px 10px;
+            background: rgba(74, 108, 247, 0.1);
+            color: var(--primary-color);
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .read-more {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .read-more:hover {
+            text-decoration: underline;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .sidebar-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 25px;
+            border: 1px solid var(--border-color);
+        }
+
+        .search-box {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius) 0 0 var(--radius);
+            background: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        .search-btn {
+            padding: 12px 20px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .search-btn:hover {
+            background: var(--secondary-color);
+        }
+
+        .categories {
+            list-style: none;
+        }
+
+        .category {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .category:last-child {
+            border-bottom: none;
+        }
+
+        .category a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .category a:hover {
+            color: var(--primary-color);
+        }
+
+        .tag-count {
+            background: rgba(74, 108, 247, 0.1);
+            color: var(--primary-color);
+            border-radius: 12px;
+            padding: 2px 10px;
+            font-size: 12px;
+        }
+
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag-lg {
+            padding: 6px 14px;
+            background: rgba(74, 108, 247, 0.1);
+            color: var(--primary-color);
+            border-radius: 20px;
+            font-size: 14px;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .tag-lg:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .recent-posts {
+            list-style: none;
+        }
+
+        .recent-post {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .recent-post:last-child {
+            border-bottom: none;
+        }
+
+        .recent-post a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: var(--transition);
+            display: block;
+        }
+
+        .recent-post a:hover {
+            color: var(--primary-color);
+        }
+
+        .post-date {
+            font-size: 13px;
+            color: var(--primary-color);
+            margin-top: 5px;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 40px;
+        }
+
+        .page-item {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .page-item:hover, .page-item.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--card-bg);
+            padding: 40px 0 20px;
+            border-top: 1px solid var(--border-color);
+            margin-top: 40px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            color: var(--text-color);
+            opacity: 0.7;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                flex-direction: column;
+                background: var(--card-bg);
+                width: 100%;
+                padding: 20px;
+                transition: var(--transition);
+                box-shadow: var(--shadow);
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .header-actions .btn {
+                display: none;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .blog-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .blog-footer {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">
+                <span>Shigure's blog</span>
+            </a>
+            
+            <button class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#" class="nav-link active">首页</a></li>
+                <li><a href="#" class="nav-link">分类</a></li>
+                <li><a href="#" class="nav-link">？</a></li>
+                <li><a href="#" class="nav-link">？</a></li>
+                <li><a href="#" class="nav-link">？</a></li>
+                <li><a href="#" class="nav-link">关于</a></li>
+            </ul>
+            
+            <div class="header-actions">
+                <div class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+
+    <!-- Main Content -->
+    <div class="container main-content" float = "right">
+        <main>
+            <h2 class="section-title">最新文章</h2>
+            
+            <div class="blog-list">
+                <!-- Blog Post 1 -->
+                <article class="blog-item">
+                    <div class="blog-header">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> 2023-10-15</span>
+                        </div>
+                        <div class="tag">tag</div>
+                    </div>
+                    <h3 class="blog-title"><a href="#">使用React Hooks优化组件性能的5种实用技巧</a></h3>
+                    <p class="blog-excerpt">本文将介绍如何利用React Hooks如useMemo、useCallback和useEffect来优化组件性能，减少不必要的渲染，提升应用响应速度...</p>
+                    <div class="blog-footer">
+                        <a href="#" class="read-more">阅读全文 →</a>
+                        <span>#前端 #性能优化</span>
+                    </div>
+                </article>
+                
+                <!-- Blog Post 2 -->
+                <article class="blog-item">
+                    <div class="blog-header">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> 2023-10-12</span>
+                        </div>
+                        <div class="tag">tag</div>
+                    </div>
+                    <h3 class="blog-title"><a href="#">Node.js异步编程最佳实践：从回调到async/await</a></h3>
+                    <p class="blog-excerpt">深入探讨Node.js中异步编程的各种模式，包括回调函数、Promise和async/await的使用技巧，以及错误处理和性能考量...</p>
+                    <div class="blog-footer">
+                        <a href="#" class="read-more">阅读全文 →</a>
+                        <span>#后端 #JavaScript</span>
+                    </div>
+                </article>
+                
+                <!-- Blog Post 3 -->
+                <article class="blog-item">
+                    <div class="blog-header">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> 2023-10-08</span>
+                        </div>
+                        <div class="tag">tag</div>
+                    </div>
+                    <h3 class="blog-title"><a href="#">PostgreSQL高级查询优化指南</a></h3>
+                    <p class="blog-excerpt">学习如何优化PostgreSQL查询性能，包括索引策略、查询计划分析、连接优化和分区表的使用，适用于中大型应用场景...</p>
+                    <div class="blog-footer">
+                        <a href="#" class="read-more">阅读全文 →</a>
+                        <span>#数据库 #性能优化</span>
+                    </div>
+                </article>
+                
+                <!-- Blog Post 4 -->
+                <article class="blog-item">
+                    <div class="blog-header">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> 2023-10-05</span>
+                        </div>
+                        <div class="tag">tag</div>
+                    </div>
+                    <h3 class="blog-title"><a href="#">使用Docker和Kubernetes构建可扩展的微服务架构</a></h3>
+                    <p class="blog-excerpt">详细指南：如何使用Docker容器化应用，并通过Kubernetes实现自动扩展、服务发现和负载均衡，构建高可用的微服务体系...</p>
+                    <div class="blog-footer">
+                        <a href="#" class="read-more">阅读全文 →</a>
+                        <span>#DevOps #微服务</span>
+                    </div>
+                </article>
+                
+                <!-- Blog Post 5 -->
+                <article class="blog-item">
+                    <div class="blog-header">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> 2023-10-01</span>
+                        </div>
+                        <div class="tag">tag</div>
+                    </div>
+                    <h3 class="blog-title"><a href="#">TypeScript类型体操：高级类型编程技巧</a></h3>
+                    <p class="blog-excerpt">探索TypeScript的高级类型系统，包括条件类型、映射类型、模板字面量类型等，以及如何利用它们构建更健壮的类型定义...</p>
+                    <div class="blog-footer">
+                        <a href="#" class="read-more">阅读全文 →</a>
+                        <span>#前端 #TypeScript</span>
+                    </div>
+                </article>
+            </div>
+            
+                    </main>
+        
+     
+
+   
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileToggle.innerHTML = navMenu.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+            } else {
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                }
+            });
+        });
+        
+        // Check for saved theme preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.body.classList.add('dark-mode');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+        }
+    </script>
+</body>
+</html>
