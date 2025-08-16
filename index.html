@@ -475,6 +475,20 @@
                 gap: 15px;
             }
         }
+
+        .left{
+            background-color : #ffffff;
+            float : left;
+            width : 200px;
+            margin-top : 100px;
+            margin-left : 10px;
+            padding-left : 100px;
+            height : 1000px;
+            margin-right : 0;
+            padding-right : 0px;
+            
+        }
+
     </style>
 </head>
 <body>
@@ -507,95 +521,108 @@
     </header>
 
 
+    <div>
 
-    <!-- Main Content -->
-    <div class="container main-content" float = "right">
-        <main>
-            <h2 class="section-title">最新文章</h2>
-            
-            <div class="blog-list">
-                <!-- Blog Post 1 -->
-                <article class="blog-item">
-                    <div class="blog-header">
-                        <div class="blog-meta">
-                            <span><i class="far fa-calendar"></i> 2023-10-15</span>
-                        </div>
-                        <div class="tag">tag</div>
-                    </div>
-                    <h3 class="blog-title"><a href="#">使用React Hooks优化组件性能的5种实用技巧</a></h3>
-                    <p class="blog-excerpt">本文将介绍如何利用React Hooks如useMemo、useCallback和useEffect来优化组件性能，减少不必要的渲染，提升应用响应速度...</p>
-                    <div class="blog-footer">
-                        <a href="#" class="read-more">阅读全文 →</a>
-                        <span>#前端 #性能优化</span>
-                    </div>
-                </article>
-                
-                <!-- Blog Post 2 -->
-                <article class="blog-item">
-                    <div class="blog-header">
-                        <div class="blog-meta">
-                            <span><i class="far fa-calendar"></i> 2023-10-12</span>
-                        </div>
-                        <div class="tag">tag</div>
-                    </div>
-                    <h3 class="blog-title"><a href="#">Node.js异步编程最佳实践：从回调到async/await</a></h3>
-                    <p class="blog-excerpt">深入探讨Node.js中异步编程的各种模式，包括回调函数、Promise和async/await的使用技巧，以及错误处理和性能考量...</p>
-                    <div class="blog-footer">
-                        <a href="#" class="read-more">阅读全文 →</a>
-                        <span>#后端 #JavaScript</span>
-                    </div>
-                </article>
-                
-                <!-- Blog Post 3 -->
-                <article class="blog-item">
-                    <div class="blog-header">
-                        <div class="blog-meta">
-                            <span><i class="far fa-calendar"></i> 2023-10-08</span>
-                        </div>
-                        <div class="tag">tag</div>
-                    </div>
-                    <h3 class="blog-title"><a href="#">PostgreSQL高级查询优化指南</a></h3>
-                    <p class="blog-excerpt">学习如何优化PostgreSQL查询性能，包括索引策略、查询计划分析、连接优化和分区表的使用，适用于中大型应用场景...</p>
-                    <div class="blog-footer">
-                        <a href="#" class="read-more">阅读全文 →</a>
-                        <span>#数据库 #性能优化</span>
-                    </div>
-                </article>
-                
-                <!-- Blog Post 4 -->
-                <article class="blog-item">
-                    <div class="blog-header">
-                        <div class="blog-meta">
-                            <span><i class="far fa-calendar"></i> 2023-10-05</span>
-                        </div>
-                        <div class="tag">tag</div>
-                    </div>
-                    <h3 class="blog-title"><a href="#">使用Docker和Kubernetes构建可扩展的微服务架构</a></h3>
-                    <p class="blog-excerpt">详细指南：如何使用Docker容器化应用，并通过Kubernetes实现自动扩展、服务发现和负载均衡，构建高可用的微服务体系...</p>
-                    <div class="blog-footer">
-                        <a href="#" class="read-more">阅读全文 →</a>
-                        <span>#DevOps #微服务</span>
-                    </div>
-                </article>
-                
-                <!-- Blog Post 5 -->
-                <article class="blog-item">
-                    <div class="blog-header">
-                        <div class="blog-meta">
-                            <span><i class="far fa-calendar"></i> 2023-10-01</span>
-                        </div>
-                        <div class="tag">tag</div>
-                    </div>
-                    <h3 class="blog-title"><a href="#">TypeScript类型体操：高级类型编程技巧</a></h3>
-                    <p class="blog-excerpt">探索TypeScript的高级类型系统，包括条件类型、映射类型、模板字面量类型等，以及如何利用它们构建更健壮的类型定义...</p>
-                    <div class="blog-footer">
-                        <a href="#" class="read-more">阅读全文 →</a>
-                        <span>#前端 #TypeScript</span>
-                    </div>
-                </article>
+        <div class="left">
+            <div>
+                <img href="" />
             </div>
-            
-                    </main>
+        </div>
+
+
+        <!-- Main Content -->
+        <div class="container main-content"  style="float:right;padding:0px 0px 0px 0px;margin-left:5px;margin-right:0px;">
+            <main>
+                <h2 class="section-title">最新文章</h2>
+
+                <div class="blog-list">
+                    <!-- Blog Post 1 -->
+                    <article class="blog-item">
+                        <div class="blog-header">
+                            <div class="blog-meta">
+                                <span><i class="far fa-calendar"></i> 2023-10-15</span>
+                            </div>
+                            <div class="tag">tag</div>
+                        </div>
+                        <h3 class="blog-title"><a href="#">使用React Hooks优化组件性能的5种实用技巧</a></h3>
+                        <p class="blog-excerpt">本文将介绍如何利用React Hooks如useMemo、useCallback和useEffect来优化组件性能，减少不必要的渲染，提升应用响应速度...</p>
+                        <div class="blog-footer">
+                            <a href="#" class="read-more">阅读全文 →</a>
+                            <span>#前端 #性能优化</span>
+                        </div>
+                    </article>
+
+                    <!-- Blog Post 2 -->
+                    <article class="blog-item">
+                        <div class="blog-header">
+                            <div class="blog-meta">
+                                <span><i class="far fa-calendar"></i> 2023-10-12</span>
+                            </div>
+                            <div class="tag">tag</div>
+                        </div>
+                        <h3 class="blog-title"><a href="#">Node.js异步编程最佳实践：从回调到async/await</a></h3>
+                        <p class="blog-excerpt">深入探讨Node.js中异步编程的各种模式，包括回调函数、Promise和async/await的使用技巧，以及错误处理和性能考量...</p>
+                        <div class="blog-footer">
+                            <a href="#" class="read-more">阅读全文 →</a>
+                            <span>#后端 #JavaScript</span>
+                        </div>
+                    </article>
+
+                    <!-- Blog Post 3 -->
+                    <article class="blog-item">
+                        <div class="blog-header">
+                            <div class="blog-meta">
+                                <span><i class="far fa-calendar"></i> 2023-10-08</span>
+                            </div>
+                            <div class="tag">tag</div>
+                        </div>
+                        <h3 class="blog-title"><a href="#">PostgreSQL高级查询优化指南</a></h3>
+                        <p class="blog-excerpt">学习如何优化PostgreSQL查询性能，包括索引策略、查询计划分析、连接优化和分区表的使用，适用于中大型应用场景...</p>
+                        <div class="blog-footer">
+                            <a href="#" class="read-more">阅读全文 →</a>
+                            <span>#数据库 #性能优化</span>
+                        </div>
+                    </article>
+
+                    <!-- Blog Post 4 -->
+                    <article class="blog-item">
+                        <div class="blog-header">
+                            <div class="blog-meta">
+                                <span><i class="far fa-calendar"></i> 2023-10-05</span>
+                            </div>
+                            <div class="tag">tag</div>
+                        </div>
+                        <h3 class="blog-title"><a href="#">使用Docker和Kubernetes构建可扩展的微服务架构</a></h3>
+                        <p class="blog-excerpt">详细指南：如何使用Docker容器化应用，并通过Kubernetes实现自动扩展、服务发现和负载均衡，构建高可用的微服务体系...</p>
+                        <div class="blog-footer">
+                            <a href="#" class="read-more">阅读全文 →</a>
+                            <span>#DevOps #微服务</span>
+                        </div>
+                    </article>
+
+                    <!-- Blog Post 5 -->
+                    <article class="blog-item">
+                        <div class="blog-header">
+                            <div class="blog-meta">
+                                <span><i class="far fa-calendar"></i> 2023-10-01</span>
+                            </div>
+                            <div class="tag">tag</div>
+                        </div>
+                        <h3 class="blog-title"><a href="#">TypeScript类型体操：高级类型编程技巧</a></h3>
+                        <p class="blog-excerpt">探索TypeScript的高级类型系统，包括条件类型、映射类型、模板字面量类型等，以及如何利用它们构建更健壮的类型定义...</p>
+                        <div class="blog-footer">
+                            <a href="#" class="read-more">阅读全文 →</a>
+                            <span>#前端 #TypeScript</span>
+                        </div>
+                    </article>
+                </div>
+
+
+            </main>
+
+        </div>
+
+    </div>
         
      
 
